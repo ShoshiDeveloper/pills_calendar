@@ -18,7 +18,6 @@ mixin _$Pill {
   int get id;
   String get name;
   DateTime get time;
-  bool get isDrunk;
   List<DateTime> get drinkingDates;
 
   /// Create a copy of Pill
@@ -39,19 +38,18 @@ mixin _$Pill {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.isDrunk, isDrunk) || other.isDrunk == isDrunk) &&
             const DeepCollectionEquality()
                 .equals(other.drinkingDates, drinkingDates));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, time, isDrunk,
+  int get hashCode => Object.hash(runtimeType, id, name, time,
       const DeepCollectionEquality().hash(drinkingDates));
 
   @override
   String toString() {
-    return 'Pill(id: $id, name: $name, time: $time, isDrunk: $isDrunk, drinkingDates: $drinkingDates)';
+    return 'Pill(id: $id, name: $name, time: $time, drinkingDates: $drinkingDates)';
   }
 }
 
@@ -60,12 +58,7 @@ abstract mixin class $PillCopyWith<$Res> {
   factory $PillCopyWith(Pill value, $Res Function(Pill) _then) =
       _$PillCopyWithImpl;
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      DateTime time,
-      bool isDrunk,
-      List<DateTime> drinkingDates});
+  $Res call({int id, String name, DateTime time, List<DateTime> drinkingDates});
 }
 
 /// @nodoc
@@ -83,7 +76,6 @@ class _$PillCopyWithImpl<$Res> implements $PillCopyWith<$Res> {
     Object? id = null,
     Object? name = null,
     Object? time = null,
-    Object? isDrunk = null,
     Object? drinkingDates = null,
   }) {
     return _then(_self.copyWith(
@@ -99,10 +91,6 @@ class _$PillCopyWithImpl<$Res> implements $PillCopyWith<$Res> {
           ? _self.time
           : time // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isDrunk: null == isDrunk
-          ? _self.isDrunk
-          : isDrunk // ignore: cast_nullable_to_non_nullable
-              as bool,
       drinkingDates: null == drinkingDates
           ? _self.drinkingDates
           : drinkingDates // ignore: cast_nullable_to_non_nullable
@@ -118,7 +106,6 @@ class _Pill implements Pill {
       {required this.id,
       required this.name,
       required this.time,
-      this.isDrunk = false,
       final List<DateTime> drinkingDates = const []})
       : _drinkingDates = drinkingDates;
   factory _Pill.fromJson(Map<String, dynamic> json) => _$PillFromJson(json);
@@ -129,9 +116,6 @@ class _Pill implements Pill {
   final String name;
   @override
   final DateTime time;
-  @override
-  @JsonKey()
-  final bool isDrunk;
   final List<DateTime> _drinkingDates;
   @override
   @JsonKey()
@@ -164,19 +148,18 @@ class _Pill implements Pill {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.isDrunk, isDrunk) || other.isDrunk == isDrunk) &&
             const DeepCollectionEquality()
                 .equals(other._drinkingDates, _drinkingDates));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, time, isDrunk,
+  int get hashCode => Object.hash(runtimeType, id, name, time,
       const DeepCollectionEquality().hash(_drinkingDates));
 
   @override
   String toString() {
-    return 'Pill(id: $id, name: $name, time: $time, isDrunk: $isDrunk, drinkingDates: $drinkingDates)';
+    return 'Pill(id: $id, name: $name, time: $time, drinkingDates: $drinkingDates)';
   }
 }
 
@@ -186,12 +169,7 @@ abstract mixin class _$PillCopyWith<$Res> implements $PillCopyWith<$Res> {
       __$PillCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String name,
-      DateTime time,
-      bool isDrunk,
-      List<DateTime> drinkingDates});
+  $Res call({int id, String name, DateTime time, List<DateTime> drinkingDates});
 }
 
 /// @nodoc
@@ -209,7 +187,6 @@ class __$PillCopyWithImpl<$Res> implements _$PillCopyWith<$Res> {
     Object? id = null,
     Object? name = null,
     Object? time = null,
-    Object? isDrunk = null,
     Object? drinkingDates = null,
   }) {
     return _then(_Pill(
@@ -225,10 +202,6 @@ class __$PillCopyWithImpl<$Res> implements _$PillCopyWith<$Res> {
           ? _self.time
           : time // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isDrunk: null == isDrunk
-          ? _self.isDrunk
-          : isDrunk // ignore: cast_nullable_to_non_nullable
-              as bool,
       drinkingDates: null == drinkingDates
           ? _self._drinkingDates
           : drinkingDates // ignore: cast_nullable_to_non_nullable

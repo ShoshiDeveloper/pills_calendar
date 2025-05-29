@@ -3,9 +3,11 @@ import 'package:pills_calendar/modules/pills/data/repository/pills_repository.da
 import 'package:pills_calendar/modules/pills/domain/models/pill.dart';
 
 class PillsRepository implements IPillsRepository {
+  //TODO: extract to cache_service
   Box<Map> get _box => Hive.box<Map>('pills');
 
-  Future openBox() async {
+  //TODO: extract to cache_service
+  static Future openBox() async {
     await Hive.openBox<Map>('pills');
   }
 
