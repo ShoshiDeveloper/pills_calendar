@@ -43,8 +43,11 @@ class PillsController extends Cubit<List<Pill>?> {
   //TODO: поправить частые обращения на получение
   void addPill(Pill pill) async {
     final pills = _repository.fetchAll();
-
-    await _repository.add(pill.copyWith(id: pills.last.id + 1));
+    if (pills.isEmpty) {
+      await _repository.add(pill.copyWith(id: 0));
+    } else {
+      await _repository.add(pill.copyWith(id: pills.last.id + 1));
+    }
     emit(_repository.fetchAll());
   }
 
